@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvobktufmrv03"]
+
+[ext_resource type="Texture2D" uid="uid://bo8w5wckaj56h" path="res://ASSETS/InSide/ground.png" id="2_51vmv"]
+[ext_resource type="PackedScene" uid="uid://cvqsh3j8ovpm3" path="res://SCENES/player_platformer.tscn" id="2_n6sbh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nh7bc"]
+texture = ExtResource("2_51vmv")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ptbxf"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_nh7bc")
+
+[node name="LEVEL 1" type="Node2D" unique_id=1942281249]
+
+[node name="TileMap" type="TileMap" parent="." unique_id=2005682571]
+tile_set = SubResource("TileSet_ptbxf")
+format = 2
+layer_0/tile_data = PackedInt32Array(196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0)
+
+[node name="player platformer" parent="." unique_id=1241897333 instance=ExtResource("2_n6sbh")]
+position = Vector2(-68, 26)
+
+[node name="Camera2D" type="Camera2D" parent="player platformer" unique_id=1067847352]
+zoom = Vector2(5, 5)

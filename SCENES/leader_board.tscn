@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bwv6kk10sorbp"]
+
+[ext_resource type="Script" uid="uid://bh7pu4yx68aya" path="res://SCRIPTES/leader_board.gd" id="1_i1d5g"]
+[ext_resource type="Script" uid="uid://c1mtod5a3gg3x" path="res://SCRIPTES/leaderboardrow.gd" id="2_froby"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_froby"]
+bg_color = Color(0.22786802, 0.2800963, 0.022114445, 1)
+
+[node name="leader board" type="Node2D" unique_id=347162112]
+script = ExtResource("1_i1d5g")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=212832122]
+offset_right = 379.0
+offset_bottom = 505.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_froby")
+script = ExtResource("2_froby")
+
+[node name="VScrollBar" type="VScrollBar" parent="PanelContainer" unique_id=886250549]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VScrollBar" unique_id=538927133]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

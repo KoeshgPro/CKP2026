@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://blw01yl5lbrd5"]
+
+[ext_resource type="Script" uid="uid://w4xyr7el2r1" path="res://SCRIPTES/player_ui.gd" id="1_pd8fr"]
+[ext_resource type="FontFile" uid="uid://dmqvxemhdc6em" path="res://ASSETS/UI/FONTS/PixelAE-Regular.ttf" id="2_8ehsy"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=512009351]
+script = ExtResource("1_pd8fr")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1908697938]
+position = Vector2(141, 580)
+scale = Vector2(2, 2)
+
+[node name="ProgressBar" type="ProgressBar" parent="Node2D" unique_id=48757429]
+offset_left = -51.5
+offset_right = 490.5
+offset_bottom = 27.0
+max_value = 400.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Node2D" unique_id=1958450948]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 199.5
+offset_top = 4.0
+offset_right = 239.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ADMIN PANEL" type="Node2D" parent="." unique_id=1929414240]
+visible = false
+
+[node name="ADD 10" type="Button" parent="ADMIN PANEL" unique_id=706244457]
+offset_right = 42.0
+offset_bottom = 31.0
+text = "ADD 10"
+
+[node name="MINUS 10" type="Button" parent="ADMIN PANEL" unique_id=828702004]
+offset_left = 79.0
+offset_top = 3.0
+offset_right = 163.0
+offset_bottom = 34.0
+text = "MINUS 10"
+
+[node name="LOG OUT" type="Button" parent="." unique_id=1883920295]
+offset_left = 996.0
+offset_top = 508.0
+offset_right = 1133.0
+offset_bottom = 560.0
+text = "تسجيل الخروج
+"
+
+[node name="Label" type="Label" parent="." unique_id=696481559]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_right = 123.0
+offset_bottom = 48.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_8ehsy")
+theme_override_font_sizes/font_size = 32
+text = "الحساب المستعمل : "
+
+[connection signal="pressed" from="ADMIN PANEL/ADD 10" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ADMIN PANEL/MINUS 10" to="." method="_on_minus_10_pressed"]
+[connection signal="pressed" from="LOG OUT" to="." method="_on_log_out_pressed"]

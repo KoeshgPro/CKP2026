@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://de0fbl07cbjto"]
+
+[ext_resource type="Script" uid="uid://c6g7dvrbjjd4y" path="res://SCRIPTES/main_menu.gd" id="1_3a2gc"]
+[ext_resource type="Texture2D" uid="uid://gtqrf2ut6dh6" path="res://ASSETS/IMG/Godot_v4.6.2-stable_win64_C6aQqvBi0Y.png" id="1_qb2fu"]
+[ext_resource type="FontFile" uid="uid://epr5sqc3uu1k" path="res://ASSETS/UI/FONTS/Arabic Pixel 2.ttf" id="2_o703k"]
+[ext_resource type="FontFile" uid="uid://dmqvxemhdc6em" path="res://ASSETS/UI/FONTS/PixelAE-Regular.ttf" id="4_mmaar"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3a2gc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MAIN MENU" type="Control" unique_id=720696651]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3a2gc")
+
+[node name="الخلفية لون2" type="ColorRect" parent="." unique_id=237949361]
+layout_mode = 0
+offset_right = 1316.0
+offset_bottom = 893.0
+color = Color(0.8392157, 0.627451, 0.32941177, 1)
+
+[node name="خلفية الفرعون" type="Sprite2D" parent="." unique_id=402990735]
+position = Vector2(486.99997, 329)
+scale = Vector2(4.2, 4.2)
+texture = ExtResource("1_qb2fu")
+
+[node name="الخلفية لون" type="ColorRect" parent="." unique_id=560373890]
+layout_mode = 0
+offset_right = 1316.0
+offset_bottom = 893.0
+color = Color(0, 0, 0, 0.22745098)
+
+[node name="ابدء" type="Button" parent="." unique_id=828834389]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 479.0
+offset_right = 1164.0
+offset_bottom = 554.0
+theme_override_fonts/font = ExtResource("2_o703k")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_3a2gc")
+text = "ابدء"
+
+[node name="اخرج" type="Button" parent="." unique_id=686680755]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 558.0
+offset_right = 1164.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("2_o703k")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_3a2gc")
+text = "اخرج"
+
+[node name="بواسطة اسر اسلام" type="RichTextLabel" parent="." unique_id=405625310]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 98.0
+offset_right = 1505.0
+offset_bottom = 239.0
+theme_override_fonts/normal_font = ExtResource("4_mmaar")
+theme_override_font_sizes/normal_font_size = 62
+text = "بواسطة : اسر اسلام"
+
+[connection signal="pressed" from="ابدء" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="اخرج" to="." method="_on_button_2_pressed"]

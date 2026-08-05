@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b3fi8blt46lte"]
+
+[ext_resource type="Script" uid="uid://dugwwd1lm4ens" path="res://SCRIPTES/login.gd" id="1_5hcgt"]
+[ext_resource type="FontFile" uid="uid://dmqvxemhdc6em" path="res://ASSETS/UI/FONTS/PixelAE-Regular.ttf" id="2_idb58"]
+
+[node name="LOGIN" type="Panel" unique_id=272186899]
+offset_left = 700.0
+offset_top = 145.0
+offset_right = 1079.0
+offset_bottom = 554.0
+script = ExtResource("1_5hcgt")
+
+[node name="2كلمة المرور ادخال" type="TextEdit" parent="." unique_id=1803127601]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 138.0
+offset_right = 213.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("2_idb58")
+
+[node name="2اسم المستخدم ادخال" type="TextEdit" parent="." unique_id=1969797192]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 72.0
+offset_right = 214.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("2_idb58")
+
+[node name="2اسم المستخدم" type="RichTextLabel" parent="." unique_id=1890467905]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 84.0
+offset_right = 359.0
+offset_bottom = 126.0
+theme_override_fonts/normal_font = ExtResource("2_idb58")
+theme_override_font_sizes/normal_font_size = 20
+text = "اسم المستخدم"
+
+[node name="2كلمة المرور" type="RichTextLabel" parent="." unique_id=1005750271]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 144.0
+offset_right = 363.0
+offset_bottom = 186.0
+theme_override_fonts/normal_font = ExtResource("2_idb58")
+theme_override_font_sizes/normal_font_size = 20
+text = "كلمة المرور"
+
+[node name="2تسجيل الدخول" type="Button" parent="." unique_id=1386606266]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 336.0
+offset_right = 346.0
+offset_bottom = 384.0
+theme_override_fonts/font = ExtResource("2_idb58")
+theme_override_font_sizes/font_size = 20
+text = "تسجيل الدخول"
+
+[node name="2الغاء" type="Button" parent="." unique_id=1868470542]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 333.0
+offset_right = 172.0
+offset_bottom = 381.0
+theme_override_fonts/font = ExtResource("2_idb58")
+theme_override_font_sizes/font_size = 20
+text = "الغاء"
+
+[connection signal="pressed" from="2تسجيل الدخول" to="." method="_on_login_button_down"]
