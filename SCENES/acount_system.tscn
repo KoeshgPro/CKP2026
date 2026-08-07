@@ -4,7 +4,146 @@
 [ext_resource type="Script" uid="uid://v5t6i4wnwhrc" path="res://SCRIPTES/acount_system.gd" id="1_wil78"]
 [ext_resource type="Script" uid="uid://dugwwd1lm4ens" path="res://SCRIPTES/login.gd" id="3_pog4u"]
 [ext_resource type="Script" uid="uid://cytreya87mdpk" path="res://SCRIPTES/create.gd" id="3_uosso"]
-[ext_resource type="Texture2D" uid="uid://c58r6g5aum67q" path="res://ASSETS/IMG/download.png" id="5_xtnqp"]
+[ext_resource type="Texture2D" uid="uid://cgemsasfb1twx" path="res://ASSETS/IMG/google.png" id="5_xtnqp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80140"]
+bg_color = Color(0.21568628, 0.25490198, 0.31764707, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtnqp"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fimh"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gowvt"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqqbv"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npe0w"]
+bg_color = Color(0.21568628, 0.25490198, 0.31764707, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rd8i"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7hu3"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_531v2"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctn8s"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr5v0"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i36wr"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ACOUNT SYSTEM" type="Control" unique_id=783894618]
 layout_mode = 3
@@ -15,12 +154,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wil78")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=361801638]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12156863, 0.16078432, 0.21568628, 1)
+
 [node name="نظام الحساب تسجيل الدخول _ صنع الحساب" type="RichTextLabel" parent="." unique_id=1065230141]
-layout_mode = 0
-offset_left = 223.0
-offset_top = 38.0
-offset_right = 830.0
-offset_bottom = 93.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -303.5
+offset_top = 21.0
+offset_right = 303.5
+offset_bottom = 76.0
+grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("1_cob1i")
 theme_override_font_sizes/normal_font_size = 32
 text = "نظام الحساب تسجيل الدخول / صنع الحساب"
@@ -31,6 +183,7 @@ offset_left = 64.0
 offset_top = 146.0
 offset_right = 443.0
 offset_bottom = 555.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_80140")
 script = ExtResource("3_uosso")
 
 [node name="اسم المستخدم" type="RichTextLabel" parent="CREATE" unique_id=1247001990]
@@ -61,6 +214,7 @@ offset_right = 346.0
 offset_bottom = 384.0
 theme_override_fonts/font = ExtResource("1_cob1i")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xtnqp")
 text = "انشاء حساب"
 
 [node name="الغاء" type="Button" parent="CREATE" unique_id=1435585454]
@@ -71,6 +225,7 @@ offset_right = 172.0
 offset_bottom = 381.0
 theme_override_fonts/font = ExtResource("1_cob1i")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_7fimh")
 text = "الغاء"
 
 [node name="كلمة المرور ادخال" type="LineEdit" parent="CREATE" unique_id=1701621833]
@@ -79,6 +234,7 @@ offset_left = 24.0
 offset_top = 70.0
 offset_right = 210.0
 offset_bottom = 120.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gowvt")
 
 [node name="اسم المستخدم ادخال" type="LineEdit" parent="CREATE" unique_id=800438053]
 layout_mode = 0
@@ -86,6 +242,7 @@ offset_left = 25.0
 offset_top = 139.0
 offset_right = 211.0
 offset_bottom = 189.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqqbv")
 
 [node name="اسم المستخدم2" type="RichTextLabel" parent="CREATE" unique_id=465360292]
 layout_mode = 0
@@ -112,6 +269,7 @@ offset_left = 700.0
 offset_top = 145.0
 offset_right = 1079.0
 offset_bottom = 554.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_npe0w")
 script = ExtResource("3_pog4u")
 user_edit = NodePath("2اسم المستخدم ادخال")
 pass_edit = NodePath("كلمة المرور ادخال 2")
@@ -145,6 +303,7 @@ offset_right = 346.0
 offset_bottom = 384.0
 theme_override_fonts/font = ExtResource("1_cob1i")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_2rd8i")
 text = "تسجيل الدخول"
 
 [node name="2الغاء" type="Button" parent="LOGIN" unique_id=540763173]
@@ -155,6 +314,7 @@ offset_right = 172.0
 offset_bottom = 381.0
 theme_override_fonts/font = ExtResource("1_cob1i")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_g7hu3")
 text = "الغاء"
 
 [node name="الحالة" type="RichTextLabel" parent="LOGIN" unique_id=393772408]
@@ -173,6 +333,7 @@ offset_top = 72.0
 offset_right = 215.0
 offset_bottom = 124.0
 theme_override_fonts/font = ExtResource("1_cob1i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_531v2")
 
 [node name="كلمة المرور ادخال 2" type="LineEdit" parent="LOGIN" unique_id=406055501]
 layout_mode = 0
@@ -181,6 +342,7 @@ offset_top = 144.0
 offset_right = 214.0
 offset_bottom = 196.0
 theme_override_fonts/font = ExtResource("1_cob1i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctn8s")
 
 [node name="2اسم المستخدم2" type="RichTextLabel" parent="LOGIN" unique_id=534476545]
 layout_mode = 0
@@ -193,20 +355,38 @@ theme_override_font_sizes/normal_font_size = 20
 text = "تسجيل الدخول"
 
 [node name="انشاء الحساب" type="Button" parent="." unique_id=503660473]
-layout_mode = 0
-offset_left = 430.0
-offset_top = 576.0
-offset_right = 714.0
-offset_bottom = 624.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -68.0
+offset_right = 160.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_cob1i")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr5v0")
 text = "التسجيل باستخدام جوجل"
 
-[node name="Download" type="Sprite2D" parent="انشاء الحساب" unique_id=610569292]
-position = Vector2(18, 25)
-scale = Vector2(0.2, 0.2)
+[node name="Panel" type="Panel" parent="انشاء الحساب" unique_id=726545395]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -20.0
+offset_right = 52.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i36wr")
+
+[node name="Download" type="Sprite2D" parent="انشاء الحساب/Panel" unique_id=610569292]
+position = Vector2(21, 20)
 texture = ExtResource("5_xtnqp")
-region_enabled = true
 region_rect = Rect2(47.900024, 0, 159.2, 148)
 
 [connection signal="pressed" from="CREATE/انشاء الحساب" to="CREATE" method="_on_register_button_pressed"]
