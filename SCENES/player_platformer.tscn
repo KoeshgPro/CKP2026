@@ -63,7 +63,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_niugx"]
-size = Vector2(15, 13)
+size = Vector2(8, 13)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtp2j"]
 shader = ExtResource("4_pb1en")
@@ -80,7 +80,7 @@ animation = &"MOVING"
 frame_progress = 0.79647833
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232876857]
-position = Vector2(0.5, -1.5)
+position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_niugx")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1761270041]
