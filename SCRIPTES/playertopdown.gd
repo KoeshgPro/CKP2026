@@ -6,15 +6,13 @@ extends CharacterBody2D
 
 var where = 0
 var speed = 100
+var React = 0
 
-func  _ready() -> void:
+func _ready() -> void:
 	where = 0
-	REACT.hide()
 
 
 func _physics_process(_delta):
-	if where == 0:
-		REACT.hide()
 	if Input.is_action_just_pressed("use"):
 		print(where)
 		if where == 1:
@@ -38,36 +36,39 @@ func _physics_process(_delta):
 
 
 func _on_small_pyramid_body_entered(_body: Node2D) -> void:
-	REACT.show()
+	React = 1
 	where = 1
 	pass # Replace with function body.
 
 
 func _on_miduim_body_entered(_body: Node2D) -> void:
-	REACT.show()
+	React = 2
 	where = 2
 	pass # Replace with function body.
 
 
 func _on_big_body_entered(_body: Node2D) -> void:
-	REACT.show()
+	React = 3
 	where = 3
 	pass # Replace with function body.
 
 
 func _on_big_body_exited(_body: Node2D) -> void:
-	REACT.hide()
-	where = 0
+	if where == 3:
+		React = 0
+		where = 0
 	pass # Replace with function body.
 
 
 func _on_miduim_body_exited(_body: Node2D) -> void:
-	REACT.hide()
-	where = 0
+	if where == 2:
+		React = 0
+		where = 0
 	pass # Replace with function body.
 
 
 func _on_small_pyramid_body_exited(_body: Node2D) -> void:
-	REACT.hide()
-	where = 0
+	if where == 1:
+		React = 0
+		where = 0
 	pass # Replace with function body.

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dtjos8tykkjcr" path="res://SCRIPTES/playertopdown.gd" id="1_5ixqf"]
 [ext_resource type="Texture2D" uid="uid://clqgtrqg4geki" path="res://ASSETS/PHOAROH/IDLE.png" id="1_niugx"]
 [ext_resource type="Texture2D" uid="uid://do54crey3lqu8" path="res://ASSETS/PHOAROH/WALKING - Running.png" id="2_5ixqf"]
+[ext_resource type="Script" uid="uid://k6pibadhsogt" path="res://SCRIPTES/REACT.gd" id="4_gtp2j"]
 [ext_resource type="Texture2D" uid="uid://bgglalp8vphcc" path="res://ASSETS/UI/BUTTON.png" id="4_p5wip"]
 [ext_resource type="Shader" uid="uid://cts0rc1y175ey" path="res://SHADER/PLAYERTOPDOWN.gdshader" id="4_sp5x5"]
 [ext_resource type="FontFile" uid="uid://epr5sqc3uu1k" path="res://ASSETS/UI/FONTS/Arabic Pixel 2.ttf" id="5_8d8sg"]
@@ -84,7 +85,9 @@ position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_niugx")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1761270041]
+visible = false
 position = Vector2(-26, -23)
+script = ExtResource("4_gtp2j")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Node2D2" unique_id=835569839]
 material = SubResource("ShaderMaterial_gtp2j")

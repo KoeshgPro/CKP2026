@@ -71,7 +71,7 @@ shader_parameter/target_color = Color(0.14, 0.51, 0.38, 1)
 shader_parameter/new_color = Color(0.14117648, 0.50980395, 0.38039216, 1)
 shader_parameter/tolerance = 0.10000000475
 
-[node name="player platformer" type="CharacterBody2D" unique_id=1241897333]
+[node name="player platformer" type="CharacterBody2D" unique_id=1241897333 groups=["Player"]]
 script = ExtResource("1_sswyi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=399562163]
@@ -84,6 +84,7 @@ position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_niugx")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1761270041]
+visible = false
 position = Vector2(-26, -23)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Node2D2" unique_id=835569839]

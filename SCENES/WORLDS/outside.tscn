@@ -112,7 +112,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x4h2c")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbcn3"]
-radius = 21.47614
+radius = 29.042545
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lbcn3"]
 custom_solver_bias = 0.145
@@ -164,7 +164,7 @@ tile_map_data = PackedByteArray("AADu//D/AAAEAAcAAADu//H/AAAEAAcAAADu//L/AAAEAAc
 tile_set = SubResource("TileSet_2l0u1")
 
 [node name="CharacterBody2D" parent="." unique_id=1241897333 instance=ExtResource("3_lbcn3")]
-position = Vector2(82, -3)
+position = Vector2(-143, 20)
 
 [node name="Camera2D3" type="Camera2D" parent="CharacterBody2D" unique_id=1045349559]
 zoom = Vector2(5, 5)
