@@ -12,14 +12,14 @@ config_version=5
 
 config/name="المبدع الصغير 2026"
 run/main_scene="uid://bhcku3g0t51ug"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*uid://uh5d1hx8fgbq"
 AcountSystem="*uid://v5t6i4wnwhrc"
-Transation="*uid://dv05bcvainjd4"
+VersionStatus="*uid://23wyj5ajt5e2"
 
 [display]
 
@@ -32,7 +32,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+enabled=PackedStringArray("res://addons/S. M PRO TEAM VersionStatus/VersionStatus/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg")
 
 [global_group]
 

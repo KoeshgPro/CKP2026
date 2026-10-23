@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b655sxqev6ne1"]
+
+[ext_resource type="Texture2D" uid="uid://da337v33ajhs0" path="res://addons/S. M PRO TEAM VersionStatus/Example/1789711147066.png" id="1_spir0"]
+[ext_resource type="Script" uid="uid://c0e4d6c4kv3bd" path="res://addons/S. M PRO TEAM VersionStatus/VersionStatus/Data_Control.gd" id="2_lvjtv"]
+[ext_resource type="Texture2D" uid="uid://bmh0ff06yylie" path="res://addons/S. M PRO TEAM VersionStatus/Example/1790343351200.png" id="3_80n7d"]
+[ext_resource type="Texture2D" uid="uid://wkcunxlijxl3" path="res://addons/S. M PRO TEAM VersionStatus/Example/1790343568928.png" id="4_spir0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80n7d"]
+bg_color = Color(0.16090956, 0.6626297, 0.794899, 1)
+
+[node name="Control" type="Control" unique_id=1426335503]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1382953232]
+position = Vector2(962.49994, 543)
+scale = Vector2(1.397529, 1.4192709)
+texture = ExtResource("1_spir0")
+
+[node name="Version Status" type="Control" parent="." unique_id=2045280271 node_paths=PackedStringArray("update_button", "skip")]
+visible = false
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_lvjtv")
+Your_game_version = "1.0.0"
+project_id = "SMP-CCZ887WT"
+update_button = NodePath("update")
+skip = NodePath("skip")
+metadata/_custom_type_script = "uid://c0e4d6c4kv3bd"
+
+[node name="ColorRect" type="ColorRect" parent="Version Status" unique_id=1154898572]
+layout_mode = 0
+offset_right = 1931.0
+offset_bottom = 1096.0
+color = Color(0, 0, 0, 0.7607843)
+
+[node name="Sprite2D" type="Sprite2D" parent="Version Status" unique_id=58361676]
+position = Vector2(937, 518)
+scale = Vector2(0.58000284, 0.6664623)
+texture = ExtResource("3_80n7d")
+
+[node name="update" type="Button" parent="Version Status" unique_id=855026201]
+layout_mode = 0
+offset_left = 989.0
+offset_top = 606.0
+offset_right = 2556.0
+offset_bottom = 1042.0
+scale = Vector2(0.15, 0.21)
+theme_override_font_sizes/font_size = 221
+text = "تحديث"
+icon = ExtResource("4_spir0")
+flat = true
+icon_alignment = 1
+
+[node name="skip" type="Button" parent="Version Status" unique_id=1935975319]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 606.0
+offset_right = 2202.0
+offset_bottom = 1076.0
+scale = Vector2(0.15, 0.205)
+theme_override_font_sizes/font_size = 271
+text = "لأحقا"
+icon = ExtResource("4_spir0")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Version Status" unique_id=589935205]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -222.0
+offset_right = 86.5
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_80n7d")
+text = "تحديث جديد"
+horizontal_alignment = 1

@@ -13,22 +13,31 @@ func _ready() -> void:
 		AcountSystem.account_action_failed.connect(_on_fail)
 
 func _on_register_button_pressed() -> void:
-	var email = user_edit.text.strip_edges()
-	var password = pass_edit.text.strip_edges()
-	if email == "" or password == "":
-		status_label.text = "خطأ: لا يمكن ترك خانات إنشاء الحساب فارغة!"
-		status_label.modulate = Color.RED
+	if not user_edit or not pass_edit:
 		return
-	status_label.text = "جاري إرسال البيانات للسيرفر الأونلاين..."
-	status_label.modulate = Color.WHITE
-	AcountSystem.register_user(email, password)
+		
+	var username = user_edit.text.strip_edges()
+	var password = pass_edit.text.strip_edges()
+	if username == "" or password == "":
+		if status_label:
+			status_label.text = "خطأ: لا يمكن ترك خانات إنشاء الحساب فارغة!"
+			status_label.modulate = Color.RED
+		return
+	if status_label:
+		status_label.text = "جاري إرسال البيانات للسيرفر الأونلاين..."
+		status_label.modulate = Color.WHITE
+	AcountSystem.register_user(username, password)
 
 func _on_success(msg: String) -> void:
-	status_label.text = msg
-	status_label.modulate = Color.GREEN
-	user_edit.text = ""
-	pass_edit.text = ""
+	if status_label:
+		status_label.text = msg
+		status_label.modulate = Color.GREEN
+	if user_edit:
+		user_edit.text = ""
+	if pass_edit:
+		pass_edit.text = ""
 
 func _on_fail(msg: String) -> void:
-	status_label.text = msg
-	status_label.modulate = Color.RED
+	if status_label:
+		status_label.text = msg
+		status_label.modulate = Color.RED

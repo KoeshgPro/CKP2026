@@ -111,6 +111,14 @@ texture = ExtResource("1_pak01")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x4h2c")
 
+[sub_resource type="Environment" id="Environment_c48f5"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 0.69
+glow_enabled = true
+glow_intensity = 1.41
+glow_bloom = 0.65
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbcn3"]
 radius = 29.042545
 
@@ -129,17 +137,6 @@ points = PackedVector2Array(-54.499992, 29.000004, 187.50005, 30.000004, 55.5000
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_1laoh"]
 custom_solver_bias = 0.145
 points = PackedVector2Array(-25.714294, 4.285715, 62.000023, 4.5, 17.500017, -40.000008)
-
-[sub_resource type="GDScript" id="GDScript_c48f5"]
-script/source = "extends Node2D
-
-
-func _physics_process(_delta: float) -> void:
-	if Global.Score >= 0:
-		$\".\".show()
-	elif !Global.Score >= 0:
-		$\".\".hide()
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iecec"]
 size = Vector2(43, 30)
@@ -164,16 +161,20 @@ tile_map_data = PackedByteArray("AADu//D/AAAEAAcAAADu//H/AAAEAAcAAADu//L/AAAEAAc
 tile_set = SubResource("TileSet_2l0u1")
 
 [node name="CharacterBody2D" parent="." unique_id=1241897333 instance=ExtResource("3_lbcn3")]
-position = Vector2(-143, 20)
+position = Vector2(-143, 22)
 
 [node name="Camera2D3" type="Camera2D" parent="CharacterBody2D" unique_id=1045349559]
 zoom = Vector2(5, 5)
-limit_left = -250
-limit_top = -250
-limit_right = 400
-limit_bottom = 200
+limit_left = -176
+limit_top = -249
+limit_right = 440
+limit_bottom = 201
+limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CharacterBody2D" unique_id=436048391]
+environment = SubResource("Environment_c48f5")
 
 [node name="SMALL PYRAMID" type="Node" parent="." unique_id=1567358105]
 
@@ -249,7 +250,6 @@ shape = SubResource("ConvexPolygonShape2D_1laoh")
 
 [node name="TAGG" type="Node2D" parent="." unique_id=1856243236]
 position = Vector2(33, 86)
-script = SubResource("GDScript_c48f5")
 
 [node name="Area2D" type="Area2D" parent="TAGG" unique_id=1683925132]
 

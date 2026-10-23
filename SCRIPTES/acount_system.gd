@@ -2,10 +2,15 @@ extends Node
 
 const FIREBASE_DB_URL = "https://egyptionadventure-default-rtdb.asia-southeast1.firebasedatabase.app/"
 const LOCAL_SAVE_PATH = "user://saved_user.dat"
-
+const GOOGLE_CLIENT_ID = "453005385128-jg12o9p90utmvpd7l5mk6nkp0l71rb7c.apps.googleusercontent.com"
+const GOOGLE_CLIENT_SECRET = "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"
+const REDIRECT_URI = "http://127.0.0.1:8080"
+const FIREBASE_BASE_URL = "https://egyptionadventure-default-rtdb.asia-southeast1.firebasedatabase.app/users/"
+var test_mode =  0
 var current_user: String = ""
 var is_admin: bool = false
 var http_node: HTTPRequest
+var oauth_server: TCPServer
 
 signal account_action_success(msg)
 signal account_action_failed(msg)
@@ -13,10 +18,10 @@ signal leaderboard_loaded(data)
 signal admin_status_checked(is_admin_user)
 
 func _ready() -> void:
+	set_process(false)
 	http_node = HTTPRequest.new()
 	add_child(http_node)
 	http_node.request_completed.connect(_on_request_completed)
-	
 	auto_login()
 
 func auto_login() -> void:
@@ -27,21 +32,24 @@ func auto_login() -> void:
 	var url = FIREBASE_DB_URL + "users/" + saved_username + ".json"
 	var auto_http = HTTPRequest.new()
 	add_child(auto_http)
-	@warning_ignore("unused_parameter")
-	auto_http.request_completed.connect(func(r, rc, h, b):
+	auto_http.request_completed.connect(func(_r, rc, _h, b):
+		if is_instance_valid(auto_http):
+			auto_http.queue_free()
 		if rc == 200:
 			var resp = JSON.parse_string(b.get_string_from_utf8())
 			if resp is Dictionary and resp.has("password"):
 				current_user = saved_username
 				is_admin = resp.get("is_admin", false)
-				if resp.has("score") and "Score" in Global:
-					Global.Score = int(resp["score"])
+				if resp.has("score") and "set_score" in Global:
+					Global.set_score(int(resp["score"]))
+				Global.current_user = current_user
 				emit_signal("account_action_success", "تم الدخول التلقائي بنجاح!")
 				emit_signal("admin_status_checked", is_admin)
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(1).timeout
 				var tree = Engine.get_main_loop() as SceneTree
 				if tree:
-					tree.change_scene_to_file("res://SCENES/MAIN MENU.tscn")
+					if test_mode == 0:
+						tree.change_scene_to_file("res://SCENES/MAIN MENU.tscn")
 				return
 		_clear_saved_user()
 	)
@@ -63,18 +71,23 @@ func register_user(username: String, password: String) -> void:
 	var url = FIREBASE_DB_URL + "users/" + username + ".json"
 	var check_http = HTTPRequest.new()
 	add_child(check_http)
-	@warning_ignore("unused_parameter")
-	check_http.request_completed.connect(func(r, rc, h, b):
+	check_http.request_completed.connect(func(_r, _rc, _h, b):
+		if is_instance_valid(check_http):
+			check_http.queue_free()
 		if b.get_string_from_utf8() != "null":
 			emit_signal("account_action_failed", "اسم المستخدم مسجل مسبقاً!")
 		else:
 			var body = JSON.stringify({"password": password, "score": 0, "is_admin": false})
 			var reg_http = HTTPRequest.new()
 			add_child(reg_http)
-			reg_http.request_completed.connect(func(r2, rc2, h2, b2):
+			reg_http.request_completed.connect(func(_r2, _rc2, _h2, _b2):
+				if is_instance_valid(reg_http):
+					reg_http.queue_free()
 				_save_user_locally(username)
 				current_user = username
 				is_admin = false
+				Global.current_user = username
+				Global.set_score(0)
 				emit_signal("account_action_success", "تم إنشاء الحساب أونلاين!")
 			)
 			reg_http.request(url, [], HTTPClient.METHOD_PUT, body)
@@ -85,15 +98,17 @@ func login_user(username: String, password: String) -> bool:
 	var url = FIREBASE_DB_URL + "users/" + username + ".json"
 	var login_http = HTTPRequest.new()
 	add_child(login_http)
-	@warning_ignore("unused_parameter")
-	login_http.request_completed.connect(func(r, rc, h, b):
+	login_http.request_completed.connect(func(_r, _rc, _h, b):
+		if is_instance_valid(login_http):
+			login_http.queue_free()
 		var resp = JSON.parse_string(b.get_string_from_utf8())
 		if resp is Dictionary and resp.has("password") and resp["password"] == password:
 			current_user = username
 			is_admin = resp.get("is_admin", false)
 			_save_user_locally(username)
-			if resp.has("score") and "Score" in Global:
-				Global.Score = int(resp["score"])
+			Global.current_user = username
+			if resp.has("score") and "set_score" in Global:
+				Global.set_score(int(resp["score"]))
 			emit_signal("account_action_success", "تم تسجيل الدخول بنجاح!")
 			emit_signal("admin_status_checked", is_admin)
 			await get_tree().create_timer(0.5).timeout
@@ -113,6 +128,10 @@ func save_player_score(current_score: int) -> bool:
 	var body = JSON.stringify({"score": current_score})
 	var score_http = HTTPRequest.new()
 	add_child(score_http)
+	score_http.request_completed.connect(func(_r, _rc, _h, _b):
+		if is_instance_valid(score_http):
+			score_http.queue_free()
+	)
 	score_http.request(url, [], HTTPClient.METHOD_PATCH, body)
 	return true
 
@@ -128,8 +147,9 @@ func admin_update_user_score(target_username: String, new_score: int) -> void:
 	var body = JSON.stringify({"score": new_score})
 	var admin_http = HTTPRequest.new()
 	add_child(admin_http)
-	@warning_ignore("unused_parameter")
-	admin_http.request_completed.connect(func(r, rc, h, b):
+	admin_http.request_completed.connect(func(_r, rc, _h, _b):
+		if is_instance_valid(admin_http):
+			admin_http.queue_free()
 		if rc == 200:
 			emit_signal("account_action_success", "تم تعديل سكور " + target_username + " بنجاح!")
 		else:
@@ -144,8 +164,9 @@ func admin_delete_user(target_username: String) -> void:
 	var url = FIREBASE_DB_URL + "users/" + target_username + ".json"
 	var admin_http = HTTPRequest.new()
 	add_child(admin_http)
-	@warning_ignore("unused_parameter")
-	admin_http.request_completed.connect(func(r, rc, h, b):
+	admin_http.request_completed.connect(func(_r, rc, _h, _b):
+		if is_instance_valid(admin_http):
+			admin_http.queue_free()
 		if rc == 200:
 			emit_signal("account_action_success", "تم حذف الحساب " + target_username)
 		else:
@@ -153,8 +174,7 @@ func admin_delete_user(target_username: String) -> void:
 	)
 	admin_http.request(url, [], HTTPClient.METHOD_DELETE)
 
-@warning_ignore("unused_parameter")
-func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	var body_string = body.get_string_from_utf8()
 	if response_code == 200:
 		var response = JSON.parse_string(body_string)
@@ -203,22 +223,17 @@ func _clear_saved_user() -> void:
 		DirAccess.remove_absolute(LOCAL_SAVE_PATH)
 
 func logout() -> void:
+	if current_user != "":
+		save_player_score(Global.Score)
 	current_user = ""
 	is_admin = false
 	_clear_saved_user()
+	Global.current_user = ""
+	Global.set_score(0)
 	emit_signal("account_action_success", "تم تسجيل الخروج بنجاح!")
-	save_player_score(Global.Score)
-	
 	var tree = Engine.get_main_loop() as SceneTree
 	if tree:
 		tree.change_scene_to_file("res://SCENES/acount_system.tscn")
-
-const GOOGLE_CLIENT_ID = "453005385128-jg12o9p90utmvpd7l5mk6nkp0l71rb7c.apps.googleusercontent.com"
-const GOOGLE_CLIENT_SECRET = "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"
-const REDIRECT_URI = "http://127.0.0.1:8080"
-const FIREBASE_BASE_URL = "https://egyptionadventure-default-rtdb.asia-southeast1.firebasedatabase.app/users/"
-
-var oauth_server: TCPServer
 
 func login_with_google() -> void:
 	oauth_server = TCPServer.new()
@@ -263,9 +278,9 @@ func _exchange_code_for_token(code: String) -> void:
 		
 	var token_http = HTTPRequest.new()
 	add_child(token_http)
-	@warning_ignore("unused_parameter")
-	token_http.request_completed.connect(func(r, rc, h, b):
-		token_http.queue_free()
+	token_http.request_completed.connect(func(_r, rc, _h, b):
+		if is_instance_valid(token_http):
+			token_http.queue_free()
 		if rc == 200:
 			var res = JSON.parse_string(b.get_string_from_utf8())
 			var access_token = res.get("access_token", "")
@@ -280,13 +295,12 @@ func _get_google_user_info(access_token: String) -> void:
 	var headers = ["Authorization: Bearer " + access_token]
 	var user_http = HTTPRequest.new()
 	add_child(user_http)
-	@warning_ignore("unused_parameter")
-	user_http.request_completed.connect(func(r, rc, h, b):
-		user_http.queue_free()
+	user_http.request_completed.connect(func(_r, rc, _h, b):
+		if is_instance_valid(user_http):
+			user_http.queue_free()
 		if rc == 200:
 			var user_data = JSON.parse_string(b.get_string_from_utf8())
 			var google_name = user_data.get("name", "GoogleUser").replace(" ", "_").replace(".", "")
-			
 			current_user = google_name
 			_save_user_locally(google_name)
 			_register_google_user_in_firebase(google_name)
@@ -308,20 +322,18 @@ func _register_google_user_in_firebase(username: String) -> void:
 	
 	var save_http = HTTPRequest.new()
 	add_child(save_http)
-	@warning_ignore("unused_parameter")
-	save_http.request_completed.connect(func(r, rc, h, b):
-		save_http.queue_free()
+	save_http.request_completed.connect(func(_r, rc, _h, _b):
+		if is_instance_valid(save_http):
+			save_http.queue_free()
 		if rc == 200:
 			current_user = clean_username
 			is_admin = false
 			_save_user_locally(clean_username)
-			
-			if get_node_or_null("/root/GLOBAL"):
-				get_node("/root/GLOBAL").set("current_user", clean_username)
+			Global.current_user = clean_username
+			Global.set_score(0)
 			
 			emit_signal("account_action_success", "تم تسجيل الدخول بنجاح!")
 			emit_signal("admin_status_checked", is_admin)
-			emit_signal("account_action_success", "يرجى عمل ريستارت للعبة")
 			await get_tree().create_timer(0.5).timeout
 			var tree = Engine.get_main_loop() as SceneTree
 			if tree:
@@ -330,3 +342,21 @@ func _register_google_user_in_firebase(username: String) -> void:
 			emit_signal("account_action_failed", "فشل حفظ البيانات في قاعدة البيانات")
 	)
 	save_http.request(url, ["Content-Type: application/json"], HTTPClient.METHOD_PUT, json_data)
+
+func _on_الغاء_pressed() -> void:
+	var create_panel = get_node_or_null("CREATE")
+	if create_panel:
+		for child in create_panel.get_children():
+			if child is LineEdit:
+				child.text = ""
+			elif child is RichTextLabel and child.name == "اسم المستخدم2":
+				child.text = ""
+
+func _on_الغاء2_pressed() -> void:
+	var login_panel = get_node_or_null("LOGIN")
+	if login_panel:
+		for child in login_panel.get_children():
+			if child is LineEdit:
+				child.text = ""
+			elif child is RichTextLabel and child.name == "الحالة":
+				child.text = ""

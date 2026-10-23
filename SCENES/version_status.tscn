@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cbjs3uf87afv2"]
+
+[ext_resource type="Script" uid="uid://cd514nj1kgnce" path="res://addons/S. M PRO TEAM VersionStatus/VersionStatus/Data_Control.gd" id="1_thcd6"]
+[ext_resource type="FontFile" uid="uid://dmqvxemhdc6em" path="res://ASSETS/UI/FONTS/PixelAE-Regular.ttf" id="2_a7hhh"]
+[ext_resource type="StyleBox" uid="uid://d8vystw12qop" path="res://SHADER/button hoverr.tres" id="3_n56hf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thcd6"]
+bg_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38039216, 0.4117647, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="VS" type="Control" unique_id=1982376811]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Version Status" type="Control" parent="." unique_id=566441798 node_paths=PackedStringArray("update_button", "skip")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_thcd6")
+Your_game_version = "1.0.0"
+project_id = "SMP-SDCFC84X"
+update_button = NodePath("حدث")
+skip = NodePath("ليس الان")
+metadata/_custom_type_script = "uid://cd514nj1kgnce"
+
+[node name="ColorRect" type="ColorRect" parent="Version Status" unique_id=1718043853]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12156863, 0.16078432, 0.21568628, 0.6901961)
+
+[node name="هناك تحديث" type="RichTextLabel" parent="Version Status" unique_id=50026101]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 91.0
+offset_right = 838.0
+offset_bottom = 158.0
+theme_override_fonts/normal_font = ExtResource("2_a7hhh")
+theme_override_font_sizes/normal_font_size = 32
+text = "هناك تحديث متوفر"
+
+[node name="حدث" type="Button" parent="Version Status" unique_id=843078056]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 323.0
+offset_right = 832.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("2_a7hhh")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_thcd6")
+theme_override_styles/hover = ExtResource("3_n56hf")
+text = "حدث"
+
+[node name="ليس الان" type="Button" parent="Version Status" unique_id=113720109]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 317.0
+offset_right = 469.0
+offset_bottom = 365.0
+theme_override_fonts/font = ExtResource("2_a7hhh")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_thcd6")
+theme_override_styles/hover = ExtResource("3_n56hf")
+text = "ليس الان"

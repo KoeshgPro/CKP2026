@@ -14,27 +14,30 @@ func _ready() -> void:
 
 func _on_login_button_pressed() -> void:
 	if not user_edit or not pass_edit or not status_label:
-		print("خطأ: لم تقم بربط العقد في الـ Inspector!")
 		return
 		
-	var email = user_edit.text.strip_edges()
+	var username = user_edit.text.strip_edges()
 	var password = pass_edit.text.strip_edges()
 	
-	if email == "" or password == "":
-		status_label.text = "الرجاء كتابة البريد الإلكتروني وكلمة المرور!"
+	if username == "" or password == "":
+		status_label.text = "الرجاء كتابة اسم المستخدم وكلمة المرور!"
 		status_label.modulate = Color.YELLOW
 		return
 		
 	status_label.text = "جاري الاتصال والتحقق أونلاين..."
 	status_label.modulate = Color.WHITE
-	AcountSystem.login_user(email, password)
+	AcountSystem.login_user(username, password)
 
 func _on_success(msg) -> void:
-	status_label.text = str(msg)
-	status_label.modulate = Color.GREEN
-	user_edit.text = ""
-	pass_edit.text = ""
+	if status_label:
+		status_label.text = str(msg)
+		status_label.modulate = Color.GREEN
+	if user_edit:
+		user_edit.text = ""
+	if pass_edit:
+		pass_edit.text = ""
 
 func _on_fail(msg) -> void:
-	status_label.text = str(msg)
-	status_label.modulate = Color.RED
+	if status_label:
+		status_label.text = str(msg)
+		status_label.modulate = Color.RED

@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/flash_auto.svg-4b004a5d99c12af62809ab0244f0de
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

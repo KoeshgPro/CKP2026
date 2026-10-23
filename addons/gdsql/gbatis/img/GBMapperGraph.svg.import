@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/GBMapperGraph.svg-94b9f7e7c06246561c029acfa55
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

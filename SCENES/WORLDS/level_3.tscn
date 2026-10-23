@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://8rqqdhmho5d3"]
 
+[ext_resource type="Script" uid="uid://cba3xj3paxs1x" path="res://SCRIPTES/level_3.gd" id="1_0ytuy"]
 [ext_resource type="Texture2D" uid="uid://b4wb0if6mmtls" path="res://ASSETS/InSide/Sand Tiles.png" id="1_j3f2l"]
 [ext_resource type="Texture2D" uid="uid://cdnknt3h7lmlt" path="res://ASSETS/InSide/Lessons/Lesson 1 unit 3.png" id="2_0qn7k"]
 [ext_resource type="PackedScene" uid="uid://cvqsh3j8ovpm3" path="res://SCENES/player_platformer.tscn" id="2_xqcwk"]
@@ -217,7 +218,22 @@ size = Vector2(167, 51)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hagak"]
 size = Vector2(36, 44)
 
+[sub_resource type="Environment" id="Environment_0ytuy"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 0.69
+glow_enabled = true
+glow_intensity = 1.68
+glow_bloom = 0.21
+fog_mode = 1
+fog_light_energy = 0.0
+fog_density = 1.0
+fog_depth_begin = 1193.7
+fog_depth_end = 2540.6
+volumetric_fog_density = 0.0
+
 [node name="LEVEL 3" type="Node2D" unique_id=1843666810]
+script = ExtResource("1_0ytuy")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=530108955]
 tile_set = SubResource("TileSet_0ytuy")
@@ -272,6 +288,9 @@ limit_left = -111
 limit_top = -80
 limit_right = 225
 limit_bottom = 80
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="player platformer" unique_id=1108270848]
+environment = SubResource("Environment_0ytuy")
 
 [connection signal="body_entered" from="React area" to="player platformer" method="_on_react_area_body_entered"]
 [connection signal="body_exited" from="React area" to="player platformer" method="_on_react_area_body_exited"]

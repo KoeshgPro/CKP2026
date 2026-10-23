@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dcmalu1hnjhss"]
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_jegkm"]
+
+[node name="MUSIC" type="Node2D" unique_id=1850328627]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1948614763]
+stream = SubResource("AudioStreamMP3_jegkm")

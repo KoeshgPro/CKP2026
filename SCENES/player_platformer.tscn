@@ -40,7 +40,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8d8sg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"IDLE",
 "speed": 5.0
 }, {
@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3u684")
 }],
-"loop": true,
+"loop": 1,
 "name": &"MOVING",
 "speed": 7.0
 }]
@@ -73,6 +73,15 @@ shader_parameter/tolerance = 0.10000000475
 
 [node name="player platformer" type="CharacterBody2D" unique_id=1241897333 groups=["Player"]]
 script = ExtResource("1_sswyi")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1552786962]
+position = Vector2(0, 5)
+emitting = false
+amount = 1
+lifetime = 0.2
+speed_scale = 0.2
+gravity = Vector2(0, 1000)
+color = Color(0.6883125, 0.74890023, 0.52336633, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=399562163]
 sprite_frames = SubResource("SpriteFrames_xo83f")

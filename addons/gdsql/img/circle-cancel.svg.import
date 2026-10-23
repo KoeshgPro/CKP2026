@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/circle-cancel.svg-79a54349695d1c57fa198a78a5e
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

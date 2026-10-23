@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/word_pk.svg-abe5917eb1aea6f30bb02cc676b79784.
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

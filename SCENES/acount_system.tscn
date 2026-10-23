@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://ducboigxifhcv" path="res://SHADER/button hover.tres" id="4_7fimh"]
 [ext_resource type="StyleBox" uid="uid://d8vystw12qop" path="res://SHADER/button hoverr.tres" id="5_gowvt"]
 [ext_resource type="Texture2D" uid="uid://cgemsasfb1twx" path="res://ASSETS/IMG/google.png" id="5_xtnqp"]
+[ext_resource type="PackedScene" uid="uid://cbjs3uf87afv2" path="res://SCENES/version_status.tscn" id="8_lqqbv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80140"]
 bg_color = Color(0.21568628, 0.25490198, 0.31764707, 1)
@@ -359,17 +360,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -68.0
-offset_right = 160.0
-offset_bottom = -20.0
+offset_left = -217.0
+offset_top = -80.0
+offset_right = 271.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_cob1i")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_rr5v0")
 theme_override_styles/hover = ExtResource("5_gowvt")
-text = "التسجيل باستخدام جوجل"
+text = "التسجيل باستخدام جوجل
+(يرجى عدم استخدام المتصفح بالوقت الحالي)"
 
 [node name="Panel" type="Panel" parent="انشاء الحساب" unique_id=726545395]
 layout_mode = 1
@@ -387,6 +389,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_i36wr")
 position = Vector2(21, 20)
 texture = ExtResource("5_xtnqp")
 region_rect = Rect2(47.900024, 0, 159.2, 148)
+
+[node name="VS" parent="." unique_id=1982376811 instance=ExtResource("8_lqqbv")]
+layout_mode = 1
 
 [connection signal="pressed" from="CREATE/انشاء الحساب" to="CREATE" method="_on_register_button_pressed"]
 [connection signal="pressed" from="CREATE/الغاء" to="." method="_on_الغاء_pressed"]

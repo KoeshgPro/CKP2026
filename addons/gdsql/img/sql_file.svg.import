@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/sql_file.svg-f65d341e1301f22be185d90e1d8a6ab9
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

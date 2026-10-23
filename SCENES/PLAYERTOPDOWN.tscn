@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgglalp8vphcc" path="res://ASSETS/UI/BUTTON.png" id="4_p5wip"]
 [ext_resource type="Shader" uid="uid://cts0rc1y175ey" path="res://SHADER/PLAYERTOPDOWN.gdshader" id="4_sp5x5"]
 [ext_resource type="FontFile" uid="uid://epr5sqc3uu1k" path="res://ASSETS/UI/FONTS/Arabic Pixel 2.ttf" id="5_8d8sg"]
+[ext_resource type="AudioStream" uid="uid://dsycy5qrk6vmg" path="res://ASSETS/SOUNDS/SFX/walkingsand.mp3" id="8_rmuvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5wip"]
 atlas = ExtResource("1_niugx")
@@ -41,7 +42,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8d8sg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"IDLE",
 "speed": 5.0
 }, {
@@ -58,7 +59,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3u684")
 }],
-"loop": true,
+"loop": 1,
 "name": &"MOVING",
 "speed": 7.0
 }]
@@ -74,6 +75,15 @@ shader_parameter/tolerance = 0.10000000475
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1241897333]
 script = ExtResource("1_5ixqf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=909491193]
+position = Vector2(0, 5)
+emitting = false
+amount = 4
+lifetime = 0.1
+speed_scale = 0.2
+gravity = Vector2(0, 1000)
+color = Color(0.8901961, 0.5411765, 0.14509805, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=399562163]
 sprite_frames = SubResource("SpriteFrames_xo83f")
@@ -111,3 +121,7 @@ offset_bottom = -27.5
 theme_override_fonts/font = ExtResource("5_8d8sg")
 theme_override_font_sizes/font_size = 12
 text = "اضغط على الE  للتفاعل"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=304373751]
+position = Vector2(2, 5)
+stream = ExtResource("8_rmuvd")

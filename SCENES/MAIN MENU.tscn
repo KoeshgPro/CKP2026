@@ -1,12 +1,96 @@
 [gd_scene format=3 uid="uid://de0fbl07cbjto"]
 
 [ext_resource type="Script" uid="uid://c6g7dvrbjjd4y" path="res://SCRIPTES/main_menu.gd" id="1_3a2gc"]
-[ext_resource type="Texture2D" uid="uid://gtqrf2ut6dh6" path="res://ASSETS/IMG/Godot_v4.6.2-stable_win64_C6aQqvBi0Y.png" id="1_qb2fu"]
 [ext_resource type="FontFile" uid="uid://epr5sqc3uu1k" path="res://ASSETS/UI/FONTS/Arabic Pixel 2.ttf" id="2_o703k"]
 [ext_resource type="FontFile" uid="uid://dmqvxemhdc6em" path="res://ASSETS/UI/FONTS/PixelAE-Regular.ttf" id="4_mmaar"]
+[ext_resource type="PackedScene" uid="uid://cbjs3uf87afv2" path="res://SCENES/version_status.tscn" id="5_onqqj"]
+[ext_resource type="Script" uid="uid://dnknytv1pbvp" path="res://SCRIPTES/player main menu.gd" id="6_d7g4e"]
+[ext_resource type="Texture2D" uid="uid://clqgtrqg4geki" path="res://ASSETS/PHOAROH/IDLE.png" id="6_wg7yq"]
+[ext_resource type="Texture2D" uid="uid://do54crey3lqu8" path="res://ASSETS/PHOAROH/WALKING - Running.png" id="7_d7g4e"]
+[ext_resource type="AudioStream" uid="uid://dsycy5qrk6vmg" path="res://ASSETS/SOUNDS/SFX/walkingsand.mp3" id="8_uhoxb"]
+[ext_resource type="PackedScene" uid="uid://bwv6kk10sorbp" path="res://SCENES/leader_board.tscn" id="9_gcqxy"]
+[ext_resource type="Texture2D" uid="uid://c3asubu3bsa6" path="res://ASSETS/OUTSIDE/TAG/WOOD.png" id="10_gcqxy"]
+[ext_resource type="Script" uid="uid://c0wybvnwhtkw2" path="res://SCRIPTES/wood.gd" id="11_0j356"]
+[ext_resource type="Texture2D" uid="uid://bajy3g0jlnbq" path="res://ASSETS/OUTSIDE/TAG/fadaa.png" id="12_wig6d"]
+[ext_resource type="Script" uid="uid://3hwfu4nma6wu" path="res://SCRIPTES/fadaa.gd" id="13_7n7ru"]
+[ext_resource type="Texture2D" uid="uid://b4jneycfyd4w1" path="res://ASSETS/OUTSIDE/TAG/GOLD.png" id="14_tpo0p"]
+[ext_resource type="Script" uid="uid://cph872bhvm2k0" path="res://SCRIPTES/gold.gd" id="15_mhl0t"]
+[ext_resource type="AudioStream" uid="uid://bdq6j6dqak8dd" path="res://ASSETS/SOUNDS/SFX/creatorshome-sharp-pop-328170.mp3" id="16_0j356"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3a2gc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5wip"]
+atlas = ExtResource("6_wg7yq")
+region = Rect2(0, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d8sg"]
+atlas = ExtResource("6_wg7yq")
+region = Rect2(17, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp5x5"]
+atlas = ExtResource("7_d7g4e")
+region = Rect2(0, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtp2j"]
+atlas = ExtResource("7_d7g4e")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmuvd"]
+atlas = ExtResource("7_d7g4e")
+region = Rect2(36, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u684"]
+atlas = ExtResource("7_d7g4e")
+region = Rect2(52, 0, 16, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo83f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5wip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d8sg")
+}],
+"loop": 1,
+"name": &"IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp5x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtp2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmuvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u684")
+}],
+"loop": 1,
+"name": &"MOVING",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niugx"]
+size = Vector2(15, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4v7b"]
+size = Vector2(43, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdoa0"]
+size = Vector2(29, 22)
+
+[sub_resource type="Environment" id="Environment_tcot3"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_agx_white = 2.0
+glow_enabled = true
+glow_intensity = 1.44
+glow_bloom = 0.4
 
 [node name="MAIN MENU" type="Control" unique_id=720696651]
 layout_mode = 3
@@ -22,17 +106,6 @@ layout_mode = 0
 offset_right = 1316.0
 offset_bottom = 893.0
 color = Color(0.8392157, 0.627451, 0.32941177, 1)
-
-[node name="خلفية الفرعون" type="Sprite2D" parent="." unique_id=402990735]
-position = Vector2(486.99997, 329)
-scale = Vector2(4.2, 4.2)
-texture = ExtResource("1_qb2fu")
-
-[node name="الخلفية لون" type="ColorRect" parent="." unique_id=560373890]
-layout_mode = 0
-offset_right = 1316.0
-offset_bottom = 893.0
-color = Color(0, 0, 0, 0.22745098)
 
 [node name="ابدء" type="Button" parent="." unique_id=828834389]
 layout_mode = 0
@@ -65,6 +138,78 @@ offset_bottom = 239.0
 theme_override_fonts/normal_font = ExtResource("4_mmaar")
 theme_override_font_sizes/normal_font_size = 62
 text = "بواسطة : اسر اسلام"
+
+[node name="VS" parent="." unique_id=1982376811 instance=ExtResource("5_onqqj")]
+layout_mode = 1
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1752049832]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D" unique_id=1241897333]
+position = Vector2(934, 350)
+scale = Vector2(25, 25)
+script = ExtResource("6_d7g4e")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D/CharacterBody2D" unique_id=909491193]
+position = Vector2(0, 5)
+emitting = false
+amount = 4
+lifetime = 0.1
+speed_scale = 0.2
+gravity = Vector2(0, 1000)
+color = Color(0.8901961, 0.5411765, 0.14509805, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/CharacterBody2D" unique_id=399562163]
+sprite_frames = SubResource("SpriteFrames_xo83f")
+animation = &"MOVING"
+frame_progress = 0.79647833
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D" unique_id=232876857]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_niugx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D/CharacterBody2D" unique_id=304373751]
+position = Vector2(2, 5)
+stream = ExtResource("8_uhoxb")
+
+[node name="leader board" parent="." unique_id=347162112 instance=ExtResource("9_gcqxy")]
+position = Vector2(518, 31)
+scale = Vector2(0.5, 0.5)
+
+[node name="TAGG" type="Node2D" parent="." unique_id=1599919253]
+position = Vector2(302.00003, 249)
+scale = Vector2(20, 20)
+
+[node name="Area2D" type="Area2D" parent="TAGG" unique_id=1018285564]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TAGG/Area2D" unique_id=206783531]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_n4v7b")
+
+[node name="WOOD" type="Sprite2D" parent="TAGG/Area2D" unique_id=468237635]
+texture = ExtResource("10_gcqxy")
+script = ExtResource("11_0j356")
+
+[node name="FADAA" type="Sprite2D" parent="TAGG/Area2D" unique_id=252588165]
+visible = false
+texture = ExtResource("12_wig6d")
+script = ExtResource("13_7n7ru")
+
+[node name="GOLD" type="Sprite2D" parent="TAGG/Area2D" unique_id=1396794295]
+visible = false
+texture = ExtResource("14_tpo0p")
+script = ExtResource("15_mhl0t")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TAGG" unique_id=1645065008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TAGG/StaticBody2D" unique_id=308264290]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_cdoa0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1396774388]
+environment = SubResource("Environment_tcot3")
+
+[node name="POP SOUND" type="AudioStreamPlayer2D" parent="." unique_id=497931919]
+stream = ExtResource("16_0j356")
 
 [connection signal="pressed" from="ابدء" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="اخرج" to="." method="_on_button_2_pressed"]
