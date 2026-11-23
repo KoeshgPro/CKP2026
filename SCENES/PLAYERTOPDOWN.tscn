@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://orsi7jiaos8j"]
 
 [ext_resource type="Script" uid="uid://dtjos8tykkjcr" path="res://SCRIPTES/playertopdown.gd" id="1_5ixqf"]
+[ext_resource type="Texture2D" uid="uid://clqgtrqg4geki" path="res://ASSETS/PHOAROH/IDLE.png" id="1_niugx"]
 [ext_resource type="Texture2D" uid="uid://do54crey3lqu8" path="res://ASSETS/PHOAROH/WALKING - Running.png" id="2_5ixqf"]
 [ext_resource type="Script" uid="uid://k6pibadhsogt" path="res://SCRIPTES/REACT.gd" id="4_gtp2j"]
 [ext_resource type="Texture2D" uid="uid://bgglalp8vphcc" path="res://ASSETS/UI/BUTTON.png" id="4_p5wip"]
 [ext_resource type="Shader" uid="uid://cts0rc1y175ey" path="res://SHADER/PLAYERTOPDOWN.gdshader" id="4_sp5x5"]
 [ext_resource type="FontFile" uid="uid://epr5sqc3uu1k" path="res://ASSETS/UI/FONTS/Arabic Pixel 2.ttf" id="5_8d8sg"]
 [ext_resource type="AudioStream" uid="uid://dsycy5qrk6vmg" path="res://ASSETS/SOUNDS/SFX/walkingsand.mp3" id="8_rmuvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5wip"]
+atlas = ExtResource("1_niugx")
+region = Rect2(0, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d8sg"]
+atlas = ExtResource("1_niugx")
+region = Rect2(17, 0, 17, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sp5x5"]
 atlas = ExtResource("2_5ixqf")
@@ -26,7 +35,13 @@ region = Rect2(52, 0, 16, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xo83f"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5wip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d8sg")
+}],
 "loop": 1,
 "name": &"IDLE",
 "speed": 5.0
@@ -72,7 +87,8 @@ color = Color(0.8901961, 0.5411765, 0.14509805, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=399562163]
 sprite_frames = SubResource("SpriteFrames_xo83f")
-animation = &"IDLE"
+animation = &"MOVING"
+frame_progress = 0.79647833
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232876857]
 position = Vector2(0.5, -1.5)
